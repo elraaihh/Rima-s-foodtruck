@@ -6,18 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="RIMA'S foodtruck i Varberg serverar libanesisk street food – falafel, shawarma, halloumi, veganskt och catering."
+    content="RIMA'S foodtruck i Varberg – familjeägt sedan 2014. Libanesisk street food, falafel, shawarma, halloumi, veganska alternativ och catering."
   />
   <style>
     :root {
-      --bg: #050816;
-      --bg-alt: #0b1220;
-      --card: #0b1120;
-      --accent: #facc15;
-      --accent-dark: #ca8a04;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --border: #1f2937;
+      /* Libanon-färger: rött, vitt, grönt */
+      --bg: #ffffff;
+      --bg-alt: #fee2e2;
+      --card: #ffffff;
+      --accent: #16a34a;      /* grön */
+      --accent-dark: #166534; /* mörkgrön */
+      --accent-red: #dc2626;  /* röd */
+      --text: #111827;
+      --muted: #4b5563;
+      --border: #e5e7eb;
       --radius: 16px;
     }
 
@@ -30,7 +32,12 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      background: linear-gradient(
+        to bottom,
+        var(--bg-alt) 0,
+        #ffffff 40%,
+        #dcfce7 100%
+      );
       color: var(--text);
       line-height: 1.6;
     }
@@ -63,8 +70,8 @@
       top: 0;
       z-index: 10;
       backdrop-filter: blur(14px);
-      background: rgba(5, 8, 22, 0.9);
-      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav {
@@ -85,13 +92,13 @@
       width: 34px;
       height: 34px;
       border-radius: 999px;
-      background: radial-gradient(circle at 20% 0, #facc15, #92400e);
+      background: radial-gradient(circle at 20% 0, #dc2626, #16a34a);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      color: #020617;
-      box-shadow: 0 10px 25px rgba(250, 204, 21, 0.6);
+      color: #f9fafb;
+      box-shadow: 0 10px 25px rgba(220, 38, 38, 0.4);
       font-size: 1rem;
     }
 
@@ -99,6 +106,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       font-size: 0.95rem;
+      text-transform: uppercase;
     }
 
     .logo-sub {
@@ -122,8 +130,8 @@
     }
 
     .nav-links a:hover {
-      background: rgba(15, 23, 42, 0.9);
-      color: #f9fafb;
+      background: #f3f4f6;
+      color: var(--accent-dark);
     }
 
     .btn-main {
@@ -132,13 +140,21 @@
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      border: 1px solid var(--accent);
-      background: radial-gradient(circle at 10% 0, var(--accent), var(--accent-dark));
-      color: #111827;
+      border: 1px solid var(--accent-dark);
+      background: linear-gradient(
+        to right,
+        var(--accent),
+        var(--accent-dark)
+      );
+      color: #f9fafb;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 12px 30px rgba(250, 204, 21, 0.6);
+      box-shadow: 0 8px 22px rgba(22, 163, 74, 0.55);
       white-space: nowrap;
+    }
+
+    .btn-main:hover {
+      filter: brightness(1.05);
     }
 
     main {
@@ -164,7 +180,7 @@
     /* HERO */
 
     .hero {
-      padding: 3rem 0 2.5rem;
+      padding: 2.7rem 0 2.3rem;
     }
 
     .hero-grid {
@@ -178,7 +194,7 @@
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: var(--muted);
+      color: var(--accent-dark);
       margin-bottom: 0.6rem;
     }
 
@@ -189,7 +205,7 @@
     }
 
     .hero-title span {
-      color: var(--accent);
+      color: var(--accent-red);
     }
 
     .hero-text {
@@ -212,7 +228,7 @@
       padding: 0.4rem 0.8rem;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.9);
+      background: #f9fafb;
       color: var(--muted);
     }
 
@@ -226,13 +242,12 @@
       border-radius: 18px;
       padding: 1rem;
       border: 1px solid var(--border);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.75);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
     }
 
     .hero-card-inner {
       border-radius: 12px;
       overflow: hidden;
-      background: #020617;
       min-height: 220px;
       display: flex;
       flex-direction: column;
@@ -251,20 +266,23 @@
       font-size: 0.75rem;
       padding: 0.25rem 0.7rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border);
+      color: var(--accent-red);
+      font-weight: 600;
     }
 
     .hero-badge {
       margin-top: auto;
       background: linear-gradient(
         to top,
-        rgba(5, 6, 14, 0.95),
-        rgba(5, 6, 14, 0.7),
+        rgba(15, 23, 42, 0.7),
+        rgba(15, 23, 42, 0.1),
         transparent
       );
       padding: 0.8rem 0.9rem;
       font-size: 0.8rem;
+      color: #f9fafb;
     }
 
     .hero-stars {
@@ -286,7 +304,7 @@
       border-radius: var(--radius);
       padding: 1.3rem 1.4rem;
       border: 1px solid var(--border);
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.75);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
       font-size: 0.9rem;
     }
 
@@ -307,6 +325,7 @@
       border-radius: 999px;
       border: 1px solid var(--border);
       color: var(--muted);
+      background: #f9fafb;
     }
 
     .menu-items {
@@ -320,7 +339,7 @@
       justify-content: space-between;
       gap: 0.8rem;
       padding-bottom: 0.5rem;
-      border-bottom: 1px dashed rgba(55, 65, 81, 0.8);
+      border-bottom: 1px dashed #d1d5db;
     }
 
     .menu-item:last-child {
@@ -340,7 +359,7 @@
     .menu-price {
       white-space: nowrap;
       font-weight: 600;
-      color: var(--accent);
+      color: var(--accent-red);
       font-size: 0.9rem;
     }
 
@@ -359,7 +378,7 @@
     .review {
       padding: 0.8rem 0.9rem;
       border-radius: 12px;
-      background: #020617;
+      background: #f9fafb;
       border: 1px solid var(--border);
     }
 
@@ -401,15 +420,16 @@
       padding: 0.35rem 0.9rem;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.95);
+      background: #f9fafb;
       color: var(--muted);
     }
 
     footer {
       padding: 1.4rem 0 2rem;
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      border-top: 1px solid var(--border);
       font-size: 0.78rem;
       color: var(--muted);
+      background: #fef2f2;
     }
 
     footer .row {
@@ -460,7 +480,7 @@
           <div class="logo-mark">R</div>
           <div>
             <div class="logo-title">RIMA'S</div>
-            <div class="logo-sub">Foodtruck • Varberg</div>
+            <div class="logo-sub">Foodtruck & Catering • Varberg</div>
           </div>
         </div>
         <nav class="nav-links">
@@ -479,13 +499,14 @@
       <section class="hero" id="top">
         <div class="container hero-grid">
           <div>
-            <div class="eyebrow">Libanesisk street food • Varberg</div>
+            <div class="eyebrow">Familjeägt sedan 2014 • Libanesisk mat</div>
             <h1 class="hero-title">
-              RIMA'S foodtruck – <span>libanesisk mat</span> & stans kanske bästa falafel.
+              RIMA'S foodtruck – <span>libanesisk street food</span> & falafel i Varberg.
             </h1>
             <p class="hero-text">
               Krispig falafel, shawarma, halloumi, manoushe, hummus och mycket mer.
-              Lagat från grunden, generösa portioner och alltid ett varmt bemötande.
+              Allt lagat från grunden med libanesiska smaker, generösa portioner
+              och ett varmt bemötande.
             </p>
             <div class="hero-actions">
               <a href="#meny" class="btn-main">Se meny</a>
@@ -494,16 +515,19 @@
               </a>
             </div>
             <div class="hero-note">
-              Följ oss på Facebook för dagens plats & öppettider.
+              Du hittar oss vid Otto Torells gata i Galleria Trädgården
+              och på olika platser i Varberg, som SjöAllén och hamnen,
+              beroende på säsong.
             </div>
           </div>
 
           <div class="hero-card">
             <div class="hero-card-inner">
-              <div class="hero-tag">RIMA'S foodtruck</div>
+              <div class="hero-tag">RIMA'S Foodtruck & Catering</div>
               <div class="hero-badge">
                 <div class="hero-stars">★★★★★</div>
-                <div>Älskad av Varbergsborna – många fina omdömen online.</div>
+                <div>4,8 i betyg på Google med över 100 omdömen.</div>
+                <div>100 % rekommenderar oss på Facebook.</div>
               </div>
             </div>
             <p class="small-note">
@@ -518,42 +542,42 @@
         <div class="container">
           <h2 class="section-title">Om RIMA'S & var vi står</h2>
           <p class="section-sub">
-            Ett familjeägt kök på hjul med rötter i Libanon – mitt i hjärtat av Varberg.
+            Ett familjeägt Varbergsföretag som har funnits sedan 2014 och säljer libanesisk mat.
           </p>
 
           <div class="two-col">
             <div class="card">
               <p class="muted">
-                RIMA'S är en familjeägd foodtruck som serverar libanesisk street
-                food i Varberg. Vi står ofta vid Sjöallén, Brunnsparken eller
-                andra platser i stan – och under sommaren även vid olika
-                evenemang.
+                RIMA'S är ett familjeägt företag i Varberg som serverar
+                libanesisk street food – med fokus på falafel, shawarma,
+                halloumi och klassiska röror som hummus och baba ganoush.
               </p>
               <p class="muted">
-                All falafel friteras på plats, våra röror görs från grunden och
-                vi försöker alltid ge dig mycket mat för pengarna.
+                På sommaren hittar du oss ofta vid hamnen och SjöAllén.
+                Under höst och vinter står vi vanligtvis vid Brunnsparken
+                eller vid Otto Torells gata i Galleria Trädgården.
               </p>
               <div class="tag-row">
                 <span class="tag">Falafel & shawarma</span>
-                <span class="tag">Veganskt & vegetariskt</span>
-                <span class="tag">Street food</span>
-                <span class="tag">Familjeägt</span>
+                <span class="tag">Vegetariskt & veganskt</span>
+                <span class="tag">Familjeägt sedan 2014</span>
+                <span class="tag">Foodtruck & catering</span>
               </div>
             </div>
 
             <div class="card">
               <h3 style="margin-bottom: 0.35rem;">Var står vi idag?</h3>
               <p class="muted">
-                Vi uppdaterar våra tider och var vi står via sociala medier.
+                Vi uppdaterar löpande var vi står och våra öppettider via Facebook.
               </p>
               <ul class="small-note" style="margin-top: 0.7rem; list-style: none;">
                 <li>• Klicka på knappen nedan för att gå till vår Facebook-sida.</li>
-                <li>• Där lägger vi upp dagens plats, öppettider och eventuella ändringar.</li>
+                <li>• Där ser du dagens plats, öppettider och eventuella ändringar.</li>
               </ul>
               <div class="social-row" style="margin-top: 0.9rem;">
                 <a
                   class="social-pill"
-                  href="https://www.facebook.com"
+                  href="https://www.facebook.com/Rimasvarberg"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -570,7 +594,8 @@
         <div class="container">
           <h2 class="section-title">Meny – exempel</h2>
           <p class="section-sub">
-            Här är ett exempel på hur menyn kan se ut. Ändra fritt till dina riktiga rätter och priser.
+            Menyn kan variera lite beroende på säsong, men här är några av våra mest
+            populära rätter och ungefärliga priser.
           </p>
 
           <div class="two-col">
@@ -581,30 +606,40 @@
                   <div>
                     <div class="menu-name">Falafelrulle</div>
                     <div class="menu-desc">
-                      Hemgjord falafel, sallad, inlagda grönsaker, sås & bröd.
+                      Hemgjord falafel, sallad, inlagda grönsaker, mynta, tahinisås & bröd.
                     </div>
                   </div>
-                  <div class="menu-price">90 kr</div>
+                  <div class="menu-price">ca 95 kr</div>
                 </div>
 
                 <div class="menu-item">
                   <div>
                     <div class="menu-name">Falafeltallrik</div>
                     <div class="menu-desc">
-                      Falafel, ris eller pommes, sallad, sås & bröd.
+                      Falafel, ris eller pommes, sallad, röror, sås & bröd.
                     </div>
                   </div>
-                  <div class="menu-price">110 kr</div>
+                  <div class="menu-price">ca 110 kr</div>
                 </div>
 
                 <div class="menu-item">
                   <div>
                     <div class="menu-name">Halloumibricka</div>
                     <div class="menu-desc">
-                      Grillad halloumi, sallad, sås & bröd.
+                      Grillad halloumi, sallad, pommes eller ris, sås & bröd.
                     </div>
                   </div>
-                  <div class="menu-price">115 kr</div>
+                  <div class="menu-price">ca 115 kr</div>
+                </div>
+
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-name">Shawarmarulle</div>
+                    <div class="menu-desc">
+                      Kryddig shawarma, sallad, röror & libanesiskt bröd.
+                    </div>
+                  </div>
+                  <div class="menu-price">ca 110 kr</div>
                 </div>
               </div>
             </div>
@@ -619,21 +654,42 @@
                       Libanesiskt bröd med ost, za'atar och grönsaker.
                     </div>
                   </div>
-                  <div class="menu-price">85 kr</div>
+                  <div class="menu-price">ca 85 kr</div>
                 </div>
 
                 <div class="menu-item">
                   <div>
                     <div class="menu-name">Hummus & bröd</div>
                     <div class="menu-desc">
-                      Krämig hummus toppad med olivolja & persilja.
+                      Krämig hummus toppad med olivolja, persilja & chili.
                     </div>
                   </div>
-                  <div class="menu-price">70 kr</div>
+                  <div class="menu-price">ca 70 kr</div>
+                </div>
+
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-name">Baba ganoush & bröd</div>
+                    <div class="menu-desc">
+                      Rökt aubergineröra med tahini, citron & vitlök.
+                    </div>
+                  </div>
+                  <div class="menu-price">ca 75 kr</div>
+                </div>
+
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-name">Pommes & dip</div>
+                    <div class="menu-desc">
+                      Krispiga pommes frites med valfri sås.
+                    </div>
+                  </div>
+                  <div class="menu-price">ca 40 kr</div>
                 </div>
               </div>
               <p class="small-note">
-                Fråga oss gärna om allergener & veganska alternativ. Vi hjälper dig hitta något som passar.
+                Priserna ovan är ungefärliga och kan ändras över tid.
+                Aktuell meny och priser hittar du alltid på plats vid vagnen.
               </p>
             </div>
           </div>
@@ -654,18 +710,18 @@
               <h3 style="margin-bottom: 0.4rem;">Hur fungerar catering?</h3>
               <p class="muted">
                 Berätta datum, ungefärligt antal personer och vad ni är sugna på
-                så tar vi fram ett enkelt upplägg och ett prisförslag.
+                så tar vi fram ett upplägg och ett prisförslag som passar er.
               </p>
               <p class="muted" style="margin-top: 0.7rem;">
                 Vi kan ordna:
               </p>
               <ul class="small-note" style="margin-top: 0.3rem; padding-left: 1rem;">
                 <li>• Foodtruck på plats – servering direkt från vagnen</li>
-                <li>• Buffé med libanesiska rätter</li>
+                <li>• Libanesisk buffé med röror, sallader och varma rätter</li>
                 <li>• Veganska & vegetariska alternativ</li>
               </ul>
               <p class="small-note" style="margin-top: 0.6rem;">
-                Kontakta oss via formuläret eller ring för att prata upplägg.
+                Kontakta oss via telefon eller mejl för en offert.
               </p>
             </div>
 
@@ -675,20 +731,19 @@
                 <div class="review">
                   <div class="review-stars">★★★★★</div>
                   <div>
-                    "Så god falafel, stora portioner och supertrevlig personal.
-                    Hit kommer vi tillbaka!"
+                    "Varbergs bästa falafel! Alltid färska falafelbullar och fantastisk service."
                   </div>
                   <div class="review-meta">– Gästrecension</div>
                 </div>
                 <div class="review">
                   <div class="review-stars">★★★★★</div>
                   <div>
-                    "Bästa maten i Varberg. Rekommenderar halloumirullen!"
+                    "Krispig falafelrulle, fräsch sallad och mycket mat för pengarna."
                   </div>
                   <div class="review-meta">– Gästrecension</div>
                 </div>
                 <p class="small-note">
-                  Fler recensioner hittar du via vår Facebook-sida och andra recensionssidor.
+                  Fler recensioner finns på Google, Facebook och andra recensionssidor.
                 </p>
               </div>
             </div>
@@ -701,7 +756,7 @@
         <div class="container">
           <h2 class="section-title">Kontakt</h2>
           <p class="section-sub">
-            Hör av dig om du vill boka catering, ställa frågor eller bara kolla var vi står.
+            Hör av dig om du vill boka catering, ställa frågor eller bara kolla var vi står idag.
           </p>
 
           <div class="two-col">
@@ -709,22 +764,22 @@
               <ul class="contact-list">
                 <li>
                   <div class="label">Telefon</div>
-                  <div><strong>070-000 00 00</strong> <!-- BYT TILL RÄTT NR --></div>
+                  <div><strong>070-444 63 39</strong></div>
+                </li>
+                <li>
+                  <div class="label">Adress</div>
+                  <div>Otto Torells gata 18, Galleria Trädgården, 432 44 Varberg</div>
                 </li>
                 <li>
                   <div class="label">E-post</div>
-                  <div>info@rimasfoodtruck.se <!-- BYT E-POST --></div>
-                </li>
-                <li>
-                  <div class="label">Ort</div>
-                  <div>Varberg med omnejd</div>
+                  <div>info@rimasfoodtruck.se <!-- uppdatera om ni har annan e-post --></div>
                 </li>
               </ul>
 
               <div class="social-row" style="margin-top: 1.1rem;">
                 <a
                   class="social-pill"
-                  href="https://www.facebook.com"
+                  href="https://www.facebook.com/Rimasvarberg"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -742,12 +797,13 @@
             <div class="card">
               <h3 style="margin-bottom: 0.5rem;">Snabb förfrågan</h3>
               <p class="small-note">
-                Just nu är detta bara text, men här kan du senare lägga in ett riktigt formulär.
+                Här kan ni senare lägga in ett riktigt kontaktformulär. Tills vidare går det bra
+                att ringa eller skriva på Facebook.
               </p>
               <ul class="small-note" style="margin-top: 0.6rem; padding-left: 1rem;">
-                <li>• Namn</li>
+                <li>• Namn & företag (om det gäller catering)</li>
                 <li>• Datum & ungefärligt antal gäster</li>
-                <li>• Plats</li>
+                <li>• Plats (Varberg med omnejd)</li>
                 <li>• Vad ni är sugna på (buffé, foodtruck, veganskt osv.)</li>
               </ul>
             </div>
