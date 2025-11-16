@@ -1,812 +1,771 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="sv">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; min-height: 14.0px}
+  <meta charset="UTF-8" />
+  <title>RIMA'S Foodtruck – Libanesisk mat i Varberg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="RIMA'S foodtruck i Varberg serverar libanesisk street food – falafel, shawarma, halloumi, veganskt och catering."
+  />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1220;
+      --card: #0b1120;
+      --accent: #facc15;
+      --accent-dark: #ca8a04;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: rgba(5, 8, 22, 0.9);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .nav {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0, #facc15, #92400e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #020617;
+      box-shadow: 0 10px 25px rgba(250, 204, 21, 0.6);
+      font-size: 1rem;
+    }
+
+    .logo-title {
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      font-size: 0.95rem;
+    }
+
+    .logo-sub {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      padding: 0.25rem 0.4rem;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(15, 23, 42, 0.9);
+      color: #f9fafb;
+    }
+
+    .btn-main {
+      border-radius: 999px;
+      padding: 0.55rem 1.2rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border: 1px solid var(--accent);
+      background: radial-gradient(circle at 10% 0, var(--accent), var(--accent-dark));
+      color: #111827;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(250, 204, 21, 0.6);
+      white-space: nowrap;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    section {
+      padding: 2.5rem 0;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      max-width: 30rem;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 3rem 0 2.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.7rem);
+      line-height: 1.15;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-bottom: 0.9rem;
+    }
+
+    .link-pill {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.75);
+    }
+
+    .hero-card-inner {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #020617;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      background-image: url("bilder/rimas-hero.jpg"); /* BYT TILL DIN BILD */
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .hero-tag {
+      position: absolute;
+      top: 0.7rem;
+      left: 0.8rem;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.9);
+    }
+
+    .hero-badge {
+      margin-top: auto;
+      background: linear-gradient(
+        to top,
+        rgba(5, 6, 14, 0.95),
+        rgba(5, 6, 14, 0.7),
+        transparent
+      );
+      padding: 0.8rem 0.9rem;
+      font-size: 0.8rem;
+    }
+
+    .hero-stars {
+      color: #facc15;
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+    }
+
+    /* GRID LAYOUTER */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.7rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.3rem 1.4rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.75);
+      font-size: 0.9rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .menu-items {
+      display: grid;
+      gap: 0.9rem;
+      font-size: 0.9rem;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px dashed rgba(55, 65, 81, 0.8);
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .menu-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .menu-price {
+      white-space: nowrap;
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .small-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.6rem;
+    }
+
+    .reviews {
+      display: grid;
+      gap: 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    .review {
+      padding: 0.8rem 0.9rem;
+      border-radius: 12px;
+      background: #020617;
+      border: 1px solid var(--border);
+    }
+
+    .review-stars {
+      color: #facc15;
+      font-size: 0.9rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .review-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.9rem;
+    }
+
+    .label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+
+    .social-pill {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 1.4rem 0 2rem;
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    footer .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      header {
+        position: static;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 2.2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .card {
+        padding: 1.1rem 1.15rem;
+      }
+    }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="sv"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;RIMA'S Foodtruck – Libanesisk mat i Varberg&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta</p>
-<p class="p1"><span class="Apple-converted-space">    </span>name="description"</p>
-<p class="p1"><span class="Apple-converted-space">    </span>content="RIMA'S foodtruck i Varberg serverar libanesisk libanesisk street food – falafel, shawarma, halloumi, veganskt och catering."</p>
-<p class="p1"><span class="Apple-converted-space">  </span>/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--bg: #050816;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--bg-alt: #0b1220;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--card: #0b1120;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--accent: #facc15;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--accent-dark: #ca8a04;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--text: #e5e7eb;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--muted: #9ca3af;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--border: #1f2937;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--radius: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>* {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-sizing: border-box;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",</p>
-<p class="p1"><span class="Apple-converted-space">        </span>sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at top, #111827 0, #020617 55%);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>img {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>a {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: inherit;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-decoration: none;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.page {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>min-height: 100vh;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 960px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>header {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: sticky;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>z-index: 10;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>backdrop-filter: blur(14px);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(5, 8, 22, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 1px solid rgba(15, 23, 42, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.nav {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 70px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo-mark {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 34px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 34px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at 20% 0, #facc15, #92400e);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #020617;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 10px 25px rgba(250, 204, 21, 0.6);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo-title {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.12em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.95rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo-sub {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.16em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.nav-links {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.nav-links a {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.25rem 0.4rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transition: background 0.15s ease, color 0.15s ease;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.nav-links a:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #f9fafb;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-main {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.55rem 1.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.12em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at 10% 0, var(--accent), var(--accent-dark));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #111827;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 12px 30px rgba(250, 204, 21, 0.6);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>white-space: nowrap;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>main {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex: 1;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>section {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 2.5rem 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section-title {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section-sub {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 30rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* HERO */</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 3rem 0 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-grid {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.eyebrow {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.16em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-title {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: clamp(2.1rem, 4vw, 2.7rem);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.15;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-title span {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-text {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.95rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 32rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-actions {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.link-pill {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.4rem 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-note {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-card {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--card);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 18px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 18px 40px rgba(15, 23, 42, 0.75);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-card-inner {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #020617;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>min-height: 220px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-image: url("bilder/rimas-hero.jpg"); /* BYT TILL DIN BILD */</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-size: cover;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-position: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-tag {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>top: 0.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>left: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.25rem 0.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.85);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148, 163, 184, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-badge {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(</p>
-<p class="p1"><span class="Apple-converted-space">        </span>to top,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>rgba(5, 6, 14, 0.95),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>rgba(5, 6, 14, 0.7),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>transparent</p>
-<p class="p1"><span class="Apple-converted-space">      </span>);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.8rem 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-stars {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #facc15;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* GRID LAYOUTER */</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.two-col {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.card {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--card);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 1.3rem 1.4rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 14px 34px rgba(15, 23, 42, 0.75);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.muted {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.tag-row {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.4rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.tag {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.25rem 0.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.stat-row {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.stat {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.stat strong {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* MENY */</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.menu-items {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.menu-item {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding-bottom: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 1px dashed rgba(55, 65, 81, 0.8);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.menu-item:last-child {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: none;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.menu-name {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.95rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.menu-desc {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.menu-price {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>white-space: nowrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.small-note {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* RECENSIONER / KONTAKT */</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.reviews {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.review {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.8rem 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #020617;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.review-stars {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #facc15;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.15rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.review-meta {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-list {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>list-style: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.45rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.label {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.14em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.social-row {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.social-pill {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.35rem 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.95);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>footer {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 1.4rem 0 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px solid rgba(15, 23, 42, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>footer .row {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* MOBILE */</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 860px) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero-grid,</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.two-col {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: minmax(0, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>header {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>position: static;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.nav-links {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>display: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding-top: 2.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 600px) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 0 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.card {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 1.1rem 1.15rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="page"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;header&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="container nav"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="logo"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="logo-mark"&gt;R&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="logo-title"&gt;RIMA'S&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="logo-sub"&gt;Foodtruck • Varberg&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;nav class="nav-links"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="#meny"&gt;Meny&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="#idag"&gt;Var står vi?&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="#catering"&gt;Catering&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="#omdomen"&gt;Omdömen&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="#kontakt"&gt;Kontakt&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/nav&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#kontakt" class="btn-main"&gt;Boka catering&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;main&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- HERO --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section class="hero" id="top"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container hero-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="eyebrow"&gt;Libanesisk street food • Varberg&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="hero-title"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>RIMA'S foodtruck – &lt;span&gt;libanesisk mat&lt;/span&gt; &amp; stans kanske bästa falafel.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="hero-text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Krispig falafel, shawarma, halloumi, manoushe, hummus och mycket mer.</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Lagat från grunden, generösa portioner och alltid ett varmt bemötande.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hero-actions"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;a href="#meny" class="btn-main"&gt;Se meny&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;a</p>
-<p class="p1"><span class="Apple-converted-space">                </span>class="link-pill"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>href="#idag"</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>📍 Hitta oss idag</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hero-note"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Följ oss på Facebook för dagens plats &amp; öppettider.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="hero-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hero-card-inner"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="hero-tag"&gt;RIMA'S foodtruck&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="hero-badge"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hero-stars"&gt;★★★★★&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;Älskad av Varbergsborna – många fina omdömen online.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="small-note"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Byt ut bilden genom att lägga en bildfil under &lt;code&gt;bilder/rimas-hero.jpg&lt;/code&gt;.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- OM OSS &amp; VAR STÅR VI --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section id="idag"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 class="section-title"&gt;Om RIMA'S &amp; var vi står&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="section-sub"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Ett familjeägt kök på hjul med rötter i Libanon – mitt i hjärtat av Varberg.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="two-col"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p class="muted"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>RIMA'S är en familjeägd foodtruck som serverar libanesisk street</p>
-<p class="p1"><span class="Apple-converted-space">                </span>food i Varberg. Vi står ofta vid Sjöallén, Brunnsparken eller</p>
-<p class="p1"><span class="Apple-converted-space">                </span>andra platser i stan – och under sommaren även vid olika</p>
-<p class="p1"><span class="Apple-converted-space">                </span>evenemang.</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p class="muted"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>All falafel friteras på plats, våra röror görs från grunden och</p>
-<p class="p1"><span class="Apple-converted-space">                </span>vi försöker alltid ge dig mycket mat för pengarna.</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="tag-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="tag"&gt;Falafel &amp; shawarma&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="tag"&gt;Veganskt &amp; vegetariskt&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="tag"&gt;Street food&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="tag"&gt;Familjeägt&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;h3 style="margin-bottom: 0.35rem;"&gt;Var står vi idag?&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p class="muted"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>Vi uppdaterar våra tider och var vi står via sociala medier.</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;ul class="small-note" style="margin-top: 0.7rem; list-style: none;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;• Klicka på knappen nedan för att gå till vår Facebook-sida.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;• Där lägger vi upp dagens plats, öppettider och eventuella ändringar.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="social-row" style="margin-top: 0.9rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;a</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>class="social-pill"</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>href="https://www.facebook.com"</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>target="_blank"</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>rel="noopener noreferrer"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>👍 Besök vår Facebook-sida</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- MENY --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section id="meny"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 class="section-title"&gt;Meny – exempel&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="section-sub"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Här är ett exempel på hur menyn kan se ut. Ändra fritt till dina riktiga rätter och priser.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="two-col"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;h3 style="margin-bottom: 0.8rem;"&gt;Klassiker&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="menu-items"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="menu-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="menu-name"&gt;Falafelrulle&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="menu-desc"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>Hemgjord falafel, sallad, inlagda grönsaker, sås &amp; bröd.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="menu-price"&gt;90 kr&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="menu-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="menu-name"&gt;Falafeltallrik&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="menu-desc"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>Falafel, ris eller pommes, sallad, sås &amp; bröd.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="menu-price"&gt;110 kr&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="menu-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="menu-name"&gt;Halloumibricka&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="menu-desc"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>Grillad halloumi, sallad, sås &amp; bröd.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="menu-price"&gt;115 kr&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;h3 style="margin-bottom: 0.8rem;"&gt;Mer gott&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="menu-items"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="menu-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="menu-name"&gt;Manoushe&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="menu-desc"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>Libanesiskt bröd med ost, za'atar och grönsaker.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="menu-price"&gt;85 kr&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="menu-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="menu-name"&gt;Hummus &amp; bröd&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="menu-desc"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>Krämig hummus toppad med olivolja &amp; persilja.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="menu-price"&gt;70 kr&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p class="small-note"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>Fråga oss gärna om allergener &amp; veganska alternativ. Vi hjälper dig hitta något som passar.</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- CATERING &amp; OMDÖMEN --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section id="catering"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 class="section-title"&gt;Catering &amp; events&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="section-sub"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Vi kan komma med vagnen till företag, födelsedagar, student, bröllop</p>
-<p class="p1"><span class="Apple-converted-space">            </span>och andra tillställningar i och runt Varberg.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="two-col"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;h3 style="margin-bottom: 0.4rem;"&gt;Hur fungerar catering?&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p class="muted"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>Berätta datum, ungefärligt antal personer och vad ni är sugna på</p>
-<p class="p1"><span class="Apple-converted-space">                </span>så tar vi fram ett enkelt upplägg och ett prisförslag.</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p class="muted" style="margin-top: 0.7rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>Vi kan ordna:</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;ul class="small-note" style="margin-top: 0.3rem; padding-left: 1rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;• Foodtruck på plats – servering direkt från vagnen&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;• Buffé med libanesiska rätter&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;• Veganska &amp; vegetariska alternativ&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p class="small-note" style="margin-top: 0.6rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>Kontakta oss via formuläret eller ring för att prata upplägg.</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card" id="omdomen"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;h3 style="margin-bottom: 0.6rem;"&gt;Vad säger våra gäster?&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="reviews"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="review"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="review-stars"&gt;★★★★★&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>"Så god falafel, stora portioner och supertrevlig personal.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>Hit kommer vi tillbaka!"</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="review-meta"&gt;– Gästrecension&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="review"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="review-stars"&gt;★★★★★&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>"Bästa maten i Varberg. Rekommenderar halloumirullen!"</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="review-meta"&gt;– Gästrecension&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="small-note"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>Fler recensioner hittar du via vår Facebook-sida och andra recensionssidor.</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- KONTAKT --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section id="kontakt"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 class="section-title"&gt;Kontakt&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="section-sub"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Hör av dig om du vill boka catering, ställa frågor eller bara kolla var vi står.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="two-col"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;ul class="contact-list"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="label"&gt;Telefon&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div&gt;&lt;strong&gt;070-000 00 00&lt;/strong&gt; &lt;!-- BYT TILL RÄTT NR --&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="label"&gt;E-post&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div&gt;info@rimasfoodtruck.se &lt;!-- BYT E-POST --&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="label"&gt;Ort&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div&gt;Varberg med omnejd&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/ul&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="social-row" style="margin-top: 1.1rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;a</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>class="social-pill"</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>href="https://www.facebook.com"</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>target="_blank"</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>rel="noopener noreferrer"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>👍 RIMA'S på Facebook</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;a</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>class="social-pill"</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>href="#top"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>⬆ Till toppen</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;h3 style="margin-bottom: 0.5rem;"&gt;Snabb förfrågan&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p class="small-note"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>Just nu är detta bara text, men här kan du senare lägga in ett riktigt formulär</p>
-<p class="p1"><span class="Apple-converted-space">                </span>(t.ex. via ditt webbhotell eller ett formulärtjänst).</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;ul class="small-note" style="margin-top: 0.6rem; padding-left: 1rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;• Namn&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;• Datum &amp; ungefärligt antal gäster&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;• Plats&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;• Vad ni är sugna på (buffé, foodtruck, veganskt osv.)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="container row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;© &lt;span id="year"&gt;&lt;/span&gt; RIMA'S Foodtruck, Varberg.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;Libanesisk street food • Falafel • Shawarma • Halloumi&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Sätt rätt årtal i footern automatiskt</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("year").textContent = new Date().getFullYear();</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <div class="logo">
+          <div class="logo-mark">R</div>
+          <div>
+            <div class="logo-title">RIMA'S</div>
+            <div class="logo-sub">Foodtruck • Varberg</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#meny">Meny</a>
+          <a href="#idag">Var står vi?</a>
+          <a href="#catering">Catering</a>
+          <a href="#omdomen">Omdömen</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+        <a href="#kontakt" class="btn-main">Boka catering</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">Libanesisk street food • Varberg</div>
+            <h1 class="hero-title">
+              RIMA'S foodtruck – <span>libanesisk mat</span> & stans kanske bästa falafel.
+            </h1>
+            <p class="hero-text">
+              Krispig falafel, shawarma, halloumi, manoushe, hummus och mycket mer.
+              Lagat från grunden, generösa portioner och alltid ett varmt bemötande.
+            </p>
+            <div class="hero-actions">
+              <a href="#meny" class="btn-main">Se meny</a>
+              <a class="link-pill" href="#idag">
+                📍 Hitta oss idag
+              </a>
+            </div>
+            <div class="hero-note">
+              Följ oss på Facebook för dagens plats & öppettider.
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="hero-card-inner">
+              <div class="hero-tag">RIMA'S foodtruck</div>
+              <div class="hero-badge">
+                <div class="hero-stars">★★★★★</div>
+                <div>Älskad av Varbergsborna – många fina omdömen online.</div>
+              </div>
+            </div>
+            <p class="small-note">
+              Byt ut bilden genom att lägga en bildfil under <code>bilder/rimas-hero.jpg</code>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- OM OSS & VAR STÅR VI -->
+      <section id="idag">
+        <div class="container">
+          <h2 class="section-title">Om RIMA'S & var vi står</h2>
+          <p class="section-sub">
+            Ett familjeägt kök på hjul med rötter i Libanon – mitt i hjärtat av Varberg.
+          </p>
+
+          <div class="two-col">
+            <div class="card">
+              <p class="muted">
+                RIMA'S är en familjeägd foodtruck som serverar libanesisk street
+                food i Varberg. Vi står ofta vid Sjöallén, Brunnsparken eller
+                andra platser i stan – och under sommaren även vid olika
+                evenemang.
+              </p>
+              <p class="muted">
+                All falafel friteras på plats, våra röror görs från grunden och
+                vi försöker alltid ge dig mycket mat för pengarna.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Falafel & shawarma</span>
+                <span class="tag">Veganskt & vegetariskt</span>
+                <span class="tag">Street food</span>
+                <span class="tag">Familjeägt</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 style="margin-bottom: 0.35rem;">Var står vi idag?</h3>
+              <p class="muted">
+                Vi uppdaterar våra tider och var vi står via sociala medier.
+              </p>
+              <ul class="small-note" style="margin-top: 0.7rem; list-style: none;">
+                <li>• Klicka på knappen nedan för att gå till vår Facebook-sida.</li>
+                <li>• Där lägger vi upp dagens plats, öppettider och eventuella ändringar.</li>
+              </ul>
+              <div class="social-row" style="margin-top: 0.9rem;">
+                <a
+                  class="social-pill"
+                  href="https://www.facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  👍 Besök vår Facebook-sida
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MENY -->
+      <section id="meny">
+        <div class="container">
+          <h2 class="section-title">Meny – exempel</h2>
+          <p class="section-sub">
+            Här är ett exempel på hur menyn kan se ut. Ändra fritt till dina riktiga rätter och priser.
+          </p>
+
+          <div class="two-col">
+            <div class="card">
+              <h3 style="margin-bottom: 0.8rem;">Klassiker</h3>
+              <div class="menu-items">
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-name">Falafelrulle</div>
+                    <div class="menu-desc">
+                      Hemgjord falafel, sallad, inlagda grönsaker, sås & bröd.
+                    </div>
+                  </div>
+                  <div class="menu-price">90 kr</div>
+                </div>
+
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-name">Falafeltallrik</div>
+                    <div class="menu-desc">
+                      Falafel, ris eller pommes, sallad, sås & bröd.
+                    </div>
+                  </div>
+                  <div class="menu-price">110 kr</div>
+                </div>
+
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-name">Halloumibricka</div>
+                    <div class="menu-desc">
+                      Grillad halloumi, sallad, sås & bröd.
+                    </div>
+                  </div>
+                  <div class="menu-price">115 kr</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 style="margin-bottom: 0.8rem;">Mer gott</h3>
+              <div class="menu-items">
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-name">Manoushe</div>
+                    <div class="menu-desc">
+                      Libanesiskt bröd med ost, za'atar och grönsaker.
+                    </div>
+                  </div>
+                  <div class="menu-price">85 kr</div>
+                </div>
+
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-name">Hummus & bröd</div>
+                    <div class="menu-desc">
+                      Krämig hummus toppad med olivolja & persilja.
+                    </div>
+                  </div>
+                  <div class="menu-price">70 kr</div>
+                </div>
+              </div>
+              <p class="small-note">
+                Fråga oss gärna om allergener & veganska alternativ. Vi hjälper dig hitta något som passar.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATERING & OMDÖMEN -->
+      <section id="catering">
+        <div class="container">
+          <h2 class="section-title">Catering & events</h2>
+          <p class="section-sub">
+            Vi kan komma med vagnen till företag, födelsedagar, student, bröllop
+            och andra tillställningar i och runt Varberg.
+          </p>
+
+          <div class="two-col">
+            <div class="card">
+              <h3 style="margin-bottom: 0.4rem;">Hur fungerar catering?</h3>
+              <p class="muted">
+                Berätta datum, ungefärligt antal personer och vad ni är sugna på
+                så tar vi fram ett enkelt upplägg och ett prisförslag.
+              </p>
+              <p class="muted" style="margin-top: 0.7rem;">
+                Vi kan ordna:
+              </p>
+              <ul class="small-note" style="margin-top: 0.3rem; padding-left: 1rem;">
+                <li>• Foodtruck på plats – servering direkt från vagnen</li>
+                <li>• Buffé med libanesiska rätter</li>
+                <li>• Veganska & vegetariska alternativ</li>
+              </ul>
+              <p class="small-note" style="margin-top: 0.6rem;">
+                Kontakta oss via formuläret eller ring för att prata upplägg.
+              </p>
+            </div>
+
+            <div class="card" id="omdomen">
+              <h3 style="margin-bottom: 0.6rem;">Vad säger våra gäster?</h3>
+              <div class="reviews">
+                <div class="review">
+                  <div class="review-stars">★★★★★</div>
+                  <div>
+                    "Så god falafel, stora portioner och supertrevlig personal.
+                    Hit kommer vi tillbaka!"
+                  </div>
+                  <div class="review-meta">– Gästrecension</div>
+                </div>
+                <div class="review">
+                  <div class="review-stars">★★★★★</div>
+                  <div>
+                    "Bästa maten i Varberg. Rekommenderar halloumirullen!"
+                  </div>
+                  <div class="review-meta">– Gästrecension</div>
+                </div>
+                <p class="small-note">
+                  Fler recensioner hittar du via vår Facebook-sida och andra recensionssidor.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KONTAKT -->
+      <section id="kontakt">
+        <div class="container">
+          <h2 class="section-title">Kontakt</h2>
+          <p class="section-sub">
+            Hör av dig om du vill boka catering, ställa frågor eller bara kolla var vi står.
+          </p>
+
+          <div class="two-col">
+            <div class="card">
+              <ul class="contact-list">
+                <li>
+                  <div class="label">Telefon</div>
+                  <div><strong>070-000 00 00</strong> <!-- BYT TILL RÄTT NR --></div>
+                </li>
+                <li>
+                  <div class="label">E-post</div>
+                  <div>info@rimasfoodtruck.se <!-- BYT E-POST --></div>
+                </li>
+                <li>
+                  <div class="label">Ort</div>
+                  <div>Varberg med omnejd</div>
+                </li>
+              </ul>
+
+              <div class="social-row" style="margin-top: 1.1rem;">
+                <a
+                  class="social-pill"
+                  href="https://www.facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  👍 RIMA'S på Facebook
+                </a>
+                <a
+                  class="social-pill"
+                  href="#top"
+                >
+                  ⬆ Till toppen
+                </a>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 style="margin-bottom: 0.5rem;">Snabb förfrågan</h3>
+              <p class="small-note">
+                Just nu är detta bara text, men här kan du senare lägga in ett riktigt formulär.
+              </p>
+              <ul class="small-note" style="margin-top: 0.6rem; padding-left: 1rem;">
+                <li>• Namn</li>
+                <li>• Datum & ungefärligt antal gäster</li>
+                <li>• Plats</li>
+                <li>• Vad ni är sugna på (buffé, foodtruck, veganskt osv.)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container row">
+        <div>© <span id="year"></span> RIMA'S Foodtruck, Varberg.</div>
+        <div>Libanesisk street food • Falafel • Shawarma • Halloumi</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
